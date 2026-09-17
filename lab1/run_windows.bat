@@ -1,21 +1,19 @@
 @echo off
-chcp 65001 > nul
 cd /d "%~dp0"
 
-echo [1/3] Проверка виртуального окружения...
+echo [1/3] Checking virtual environment...
 if not exist .venv (
-    echo Создание виртуального окружения .venv...
+    echo Creating .venv...
     python -m venv .venv
 )
 
-echo [2/3] Активация окружения и установка PyQt6...
+echo [2/3] Activating environment and installing PyQt6...
 call .venv\Scripts\activate
 pip install -r requirements.txt --quiet
 
-echo [3/3] Запуск лабораторной работы...
+echo [3/3] Running Python script...
 python main.py
 
 echo.
-echo Программа завершила работу.
+echo Process finished.
 pause
-
